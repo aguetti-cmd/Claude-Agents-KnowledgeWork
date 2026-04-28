@@ -1,0 +1,12 @@
+.env
+*.local.json
+.DS_Store
+__pycache__/
+*.pyc
+*.log
+
+# Ignore runtime memory but keep the templates and structure docs
+memory/*
+!memory/templates/
+!memory/templates/*
+!memory/structure.md
