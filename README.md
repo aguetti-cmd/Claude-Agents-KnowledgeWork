@@ -42,8 +42,8 @@ A production-ready multi-agent system for Claude Code. Fourteen agents (Vera orc
 ## Quickstart
 
 ```bash
-git clone https://github.com/[YOUR_USERNAME]/claude-agents
-cd claude-agents && bash install.sh
+git clone https://github.com/aguetti-cmd/Claude-Agents-KnowledgeWork
+cd Claude-Agents-KnowledgeWork && bash install.sh
 # Merge config/CLAUDE.global.md into ~/.claude/CLAUDE.md (see INSTALL.md)
 ```
 
