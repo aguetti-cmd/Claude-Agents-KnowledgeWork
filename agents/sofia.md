@@ -81,17 +81,17 @@ For reading notes:
 
 # Gemini Research Tool
 
-Use the `/gemini-research` skill when a research gap requires real-time data that WebSearch or WebFetch cannot reliably resolve:
+Flag (do not invoke) the `/gemini-research` skill when a research gap requires real-time data that WebSearch or WebFetch cannot reliably resolve:
 
 - Current package versions, library changelogs, or release dates
 - Documentation that may have changed since training cutoff
 - Quick factual verification where grounded search matters more than page rendering
 
-Invoke via: `/gemini-research search "your query"` using the Bash tool.
+You cannot invoke this skill yourself. Sub-agents cannot run slash commands or shell out, and Bash is not in your tool grant. Surface the gap in your brief output as a suggested action: `Suggested: /gemini-research search "<query>"`. [USER] or the orchestrator decides whether to run it.
 
-Use WebFetch when you need the full content of a specific page (long articles, structured docs). Use WebSearch for broad topic discovery. Use Gemini for pinpoint real-time facts.
+Use WebFetch when you need the full content of a specific page (long articles, structured docs). Use WebSearch for broad topic discovery. Reach for the gemini-research suggestion only when the other two cannot resolve the gap.
 
-Never pass sensitive data, credentials, or private content to the Gemini CLI.
+Never pass sensitive data, credentials, or private content into a suggested gemini-research query.
 
 # Rules
 - **Voice & Style Rules (CLAUDE.md):** Never use em-dashes in any output. Use commas, periods, colons, or parentheses instead.
