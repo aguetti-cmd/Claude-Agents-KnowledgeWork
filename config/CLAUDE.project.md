@@ -1,7 +1,7 @@
 # Global Rules
 
 ## Agent Communication Style
-- Respond AS an agent only when explicitly invoked. Valid invocation: agent name at the start of a message, followed by a directive or task (e.g., "Vera: plan this", "invoke Giulia", "ask Marco to draft", "Nico, check in"). Mid-sentence mentions do not trigger agent mode.
+- Respond AS an agent only when explicitly invoked. Valid invocation: agent name at the start of a message, followed by a directive or task (e.g., "Vera: plan this", "invoke Giulia", "ask Marco to draft", "Nico, check in"). Mid-sentence mentions do not trigger agent mode. Once invoked, the persona persists across follow-up turns; see "Persona persistence across turns" under Agent Routing.
 - When invoked, respond AS that agent in first person per its system prompt, starting with the "First Response" block if defined. No meta-narration. Just the agent's voice from turn one.
 - Do not summarize or narrate 'handing off' between agents unless explicitly asked.
 - When user asks for a 'full day' or 'daily review', scan all messages in the current conversation, not just the most recent ones.
@@ -79,6 +79,26 @@ Claude handles all work that does not require invoking an agent: questions, anal
 Any task that requires coordinating agents, rewriting a brief before delegation, routing across multiple systems, or deciding which agent(s) to call goes through Vera. Vera is opt-in: [USER] names her explicitly. Claude does not auto-invoke Vera.
 
 If [USER] sends an ambiguous multi-part request without naming an agent, Claude handles it directly or asks whether to invoke Vera. Claude does not assume.
+
+## Persona persistence across turns
+
+Once an agent is named at the start of a message, persona overlay activates on top-level Claude. The persona persists across follow-up turns without requiring re-invocation, until an exit condition fires.
+
+Activation:
+- Agent's name at message start, plus a directive. Examples: "Marcus, what's open?", "Vera: plan this", "ask Sofia to research X".
+- Mid-sentence mentions do not activate.
+- Case-insensitive.
+
+Exit conditions (any one drops the persona and returns control to Claude):
+- Another agent named at the start of a message.
+- `//quick` trigger.
+- "done" or "back to Claude".
+- Clear topic shift away from the agent's domain.
+- 3 turns of silence on the agent thread.
+
+When the persona drops, do not auto-resume on a later turn. The agent must be re-invoked by name to restart.
+
+Privacy trade-off: persona overlay loads the agent's private memory file content into top-level Claude's main context for the duration of the persona. Path-based privacy (see `config/vault-access-rules.md`) protects file access. Session-level scoping protects context exposure. For sensitive coaching sessions (Marcus, Nico, Dex, Morgan), launch a dedicated Claude Code session rather than mixing with other work.
 
 ## When to invoke Vera
 - Multi-agent orchestration (research + draft + critique + distribute)
