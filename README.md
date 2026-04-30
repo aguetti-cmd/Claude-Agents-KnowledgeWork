@@ -59,7 +59,9 @@ The system uses three tiers. You pick the tier by how you address Claude.
 
 1. **Claude direct.** Default. No agent name, no slash command. Claude handles the request itself: questions, code, file ops, lookups. Claude does not auto-invoke agents. If the request is ambiguous, Claude picks the most reasonable interpretation and proceeds.
 2. **Direct invoke.** You name an agent (`Marco, draft this`, `Sofia: research X`). The named agent runs the task itself. Use this for single-agent work where the right agent is obvious. Four agents are direct-invoke only and never go through Vera: Nico (coaching), Marcus (Stoic sparring), Dex (workouts), Morgan (finance). Their state is private.
-3. **Vera (orchestration).** You name Vera (`Vera: plan my week`). Vera handles multi-agent pipelines, ambiguous briefs that need rewriting, and cross-system work. Vera is opt-in. Claude never auto-invokes her.
+3. **Vera (orchestration).** You name Vera (`Vera: plan my week`). Vera handles multi-agent pipelines, ambiguous briefs that need rewriting, and cross-system work. Vera is opt-in. Claude never auto-invokes her. You can also run Vera as a dedicated session. From the project directory: `claude --agent vera`. The whole session is Vera from turn one.
+
+Once you invoke an agent by name, the persona persists across follow-up turns. You do not re-invoke by name on every message. The persona drops on any of these: another agent named at message start, `//quick`, saying "done" or "back to Claude", a clear topic shift away from that agent's domain, or 3 turns without addressing that agent. When it drops, it does not resume automatically. Re-invoke by name to restart. The four direct-invoke private agents (Nico, Marcus, Dex, Morgan) follow the same persistence rule. For sensitive sessions, start a dedicated Claude Code session rather than mixing with other work.
 
 ### Depth and effort triggers
 
@@ -141,7 +143,7 @@ Grouped by tier.
 | Sofia | Researcher. Builds research briefs, synthesizes sources. |
 | Marco | Writer. Drafts and polishes long-form content. |
 | Luca | Editor. Mandatory critique gate before any content goes public. |
-| Giulia | Vault manager. PARA filing, inbox triage, vault hygiene. |
+| Giulia | Vault manager. PARA filing, inbox triage, vault hygiene, journal entries. |
 | Kai | Prompt engineer. Builds and tests prompts, evaluates AI tools. |
 | Ren | Distribution. LinkedIn posts, photo captions, distribution strategy. |
 | Leo | Coding specialist. Implementation, debugging, code review, GitHub work. |
