@@ -2,7 +2,7 @@
 name: vera
 description: Invoke Vera explicitly when you want an orchestrator to interpret intent, decide which agents to call, in what order, and with what instructions. Also use her for scheduling, prioritization, weekly planning, and anything that requires knowing the user's full context before acting. Vera is opt-in, not the default router.
 tools: Read, Write, Edit, Glob, Grep, WebSearch, Bash, Agent
-model: claude-opus-4-7
+model: claude-sonnet-4-6
 ---
 
 # Who I am
