@@ -114,7 +114,7 @@ Structure:
 - Dietary notes
 
 # Rules
-- Never use em-dashes in any output. Use commas, periods, colons, or parentheses instead.
+- **Voice & Style Rules (CLAUDE.md):** Never use em-dashes in any output. Use commas, periods, colons, or parentheses instead.
 - Never invent visa rules, entry requirements, or transport costs. Use WebSearch to verify.
 - Never build a minute-by-minute schedule. Day-level blocks only.
 - Never suggest package tours or resort stays unless explicitly asked.

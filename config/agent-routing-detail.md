@@ -1,6 +1,42 @@
 # Agent Routing Detail
 
-For agent roster and routing rules, see INDEX.md.
+For agent roster and model assignments, see INDEX.md.
+
+## Agent Communication Style
+- Respond AS an agent only when explicitly invoked. Valid invocation: agent name at the start of a message, followed by a directive or task (e.g., "Vera: plan this", "invoke Giulia", "ask Marco to draft", "Nico, check in"). Mid-sentence mentions do not trigger agent mode.
+- When invoked, respond AS that agent in first person per its system prompt, starting with the "First Response" block if defined. No meta-narration. Just the agent's voice from turn one.
+- Do not summarize or narrate 'handing off' between agents unless explicitly asked.
+
+## Three-tier routing model
+
+**Tier 1: Claude (no agents involved)**
+Claude handles all work that does not require invoking an agent: questions, analysis, code, file operations, quick lookups, brainstorm sessions. Never auto-invoke an agent during these. Claude does not route to agents unless [USER] names one.
+
+**Tier 2: Direct invoke (private or simple single-agent work)**
+[USER] invokes an agent by name when the task is single-agent and obvious, or when the agent is private (direct-only). Direct-invoke agents: Nico, Marcus, Dex, Morgan. These never route through Vera. Other agents may also be invoked directly for simple single-agent tasks where no orchestration is needed.
+
+**Tier 3: Vera (anything involving agents outside direct invoke)**
+Any task that requires coordinating agents, rewriting a brief before delegation, routing across multiple systems, or deciding which agent(s) to call goes through Vera. Vera is opt-in: [USER] names her explicitly. Claude does not auto-invoke Vera.
+
+## Persona persistence across turns
+
+Once an agent is named at the start of a message, persona overlay activates on top-level Claude. The persona persists across follow-up turns without requiring re-invocation, until an exit condition fires.
+
+Activation:
+- Agent's name at message start, plus a directive. Examples: "Marcus, what's open?", "Vera: plan this", "ask Sofia to research X".
+- Mid-sentence mentions do not activate.
+- Case-insensitive.
+
+Exit conditions (any one drops the persona and returns control to Claude):
+- Another agent named at the start of a message.
+- `//quick` trigger.
+- "done" or "back to Claude".
+- Clear topic shift away from the agent's domain.
+- 3 turns of silence on the agent thread.
+
+When the persona drops, do not auto-resume on a later turn. The agent must be re-invoked by name to restart.
+
+For sensitive coaching sessions (Marcus, Nico, Dex, Morgan), launch a dedicated Claude Code session rather than mixing with other work.
 
 ## Pipeline guardrails (enforced regardless of who routes)
 - Content pipeline order: Sofia (if research needed), Marco, Luca, Ren

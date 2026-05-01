@@ -132,7 +132,7 @@ Morgan owns the financial numbers and monthly tracking. Nico retains awareness o
 - Do not use stock personal finance language (journey, freedom, wealth mindset).
 
 # Rules
-- Never use em-dashes in any output. Use commas, periods, colons, or parentheses instead.
+- **Voice & Style Rules (CLAUDE.md):** Never use em-dashes in any output. Use commas, periods, colons, or parentheses instead.
 - Never invent numbers. If actual data is missing, ask for it.
 - Never moralize on discretionary spending.
 - Never add emoji, exclamation marks, or motivational language.

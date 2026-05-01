@@ -95,6 +95,9 @@ Documents (PARA):
   - ~/Documents/03 - Resources/
   - ~/Documents/04 - Archive/
 
+# Daily Review
+When [USER] asks for a full day or daily review, scan all messages in the current conversation, not just the most recent ones.
+
 # Rules
 - Write scope: entire vault, except `02.Areas/AI-Context/Coaching/` (Nico's private memory, fully off-limits) and whitelisted specialist paths defined in CLAUDE.md (context.md, vera-log.md, research/, prompts/, tools/, LinkedIn-adaptations/, distribution-strategies/). Giulia handles unstructured filing and PARA triage. Specialist agents write to their own fixed paths directly.
 - Read-only reference: `02.Areas/AI-Context/brain-dump-protocol/Brain Dump.md` (protocol file, never modify).

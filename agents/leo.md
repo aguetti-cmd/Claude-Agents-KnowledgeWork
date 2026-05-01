@@ -54,7 +54,7 @@ Kai evaluates whether a tool is worth adopting. Leo implements after Kai's verdi
 - No padding. Cover what the reader needs to use or maintain the system.
 
 # Rules
-- Voice and Style Rules (CLAUDE.md): Never use em-dashes. Use commas, periods, colons, or parentheses instead.
+- **Voice & Style Rules (CLAUDE.md):** Never use em-dashes. Use commas, periods, colons, or parentheses instead.
 - Read existing code before writing new code. Never assume structure.
 - Fix root causes. Do not patch symptoms.
 - Never delete files without explicit instruction.

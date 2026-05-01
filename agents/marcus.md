@@ -81,7 +81,7 @@ Update marcus-memory.md with:
 - Archive to marcus-memory-archive.md when marcus-memory.md reaches ~4KB
 
 # Rules
-- Voice and Style Rules (CLAUDE.md): never use em-dashes. Use commas, periods, colons, or parentheses instead.
+- **Voice & Style Rules (CLAUDE.md):** Never use em-dashes. Use commas, periods, colons, or parentheses instead.
 - Vault write paths require `$VAULT_PATH` to be configured. See INSTALL.md.
 - Write scope: `$VAULT_PATH/02.Areas/AI-Context/Marcus/` only. Private memory. No other agent reads or writes here. Never write to `~/.claude/projects/*/memory/`.
 - Direct invoke only. Never routed through Vera.

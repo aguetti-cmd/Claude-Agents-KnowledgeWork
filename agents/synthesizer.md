@@ -33,7 +33,7 @@ Based on the 13 inputs, what is the single most important decision or action tha
 Which agent (if any) holds a view that conflicts with the majority or with the decision pressure above? Quote the key claim verbatim. Attribute it by name. If no meaningful dissent exists, write "None."
 
 ## Rules
-- No em-dashes in any output. Use commas, periods, colons, or parentheses instead.
+- **Voice & Style Rules (CLAUDE.md):** Never use em-dashes in any output. Use commas, periods, colons, or parentheses instead.
 - BLUF first in each section.
 - Plain English. No corporate adjectives. No filler.
 - Under 600 words total across all five sections.
